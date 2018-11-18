@@ -9,6 +9,8 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 
+#include "Engine.h"
+
 //////////////////////////////////////////////////////////////////////////
 // APunchKick01Character
 
@@ -74,6 +76,10 @@ void APunchKick01Character::SetupPlayerInputComponent(class UInputComponent* Pla
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APunchKick01Character::OnResetVR);
+
+	// attack functionality
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &APunchKick01Character::AttackStart);
+	PlayerInputComponent->BindAction("Attack", IE_Released, this, &APunchKick01Character::AttackEnd);
 }
 
 
@@ -131,4 +137,42 @@ void APunchKick01Character::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
+}
+
+void APunchKick01Character::AttackStart()
+{
+	
+}
+
+void APunchKick01Character::AttackEnd()
+{
+	
+}
+
+void APunchKick01Character::Log(ELogLevel LogLevel, FString Message)
+{
+	Log(LogLevel, Message, ELogOutput::ALL);
+}
+
+void APunchKick01Character::Log(ELogLevel LogLevel, FString Message, ELogOutput LogOutput)
+{
+	switch (LogLevel)
+	{
+	case ELogLevel::DEBUG:
+		break;
+	case ELogLevel::INFO:
+		break;
+	case ELogLevel::WARNING:
+		break;
+	case ELogLevel::ERROR:
+		break;
+	default:
+		break;
+	}
+
+
+	if (GEngine) {
+		GEngine->AddOnScreenDebugMessage(-1, 4.5f, FColor::Cyan, Message);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *Message);
 }

@@ -6,6 +6,23 @@
 #include "GameFramework/Character.h"
 #include "PunchKick01Character.generated.h"
 
+UENUM(BlueprintType)
+enum class ELogLevel: uint8 {
+	DEBUG			UMETA(DisplayName = "Debug"),
+	INFO			UMETA(DisplayName = "Info"),
+	WARNING			UMETA(DisplayName = "Warning"),
+	ERROR			UMETA(DisplayName = "Error"),
+};
+
+
+UENUM(BlueprintType)
+enum class ELogOutput: uint8 {
+	ALL				UMETA(DisplayName = "All levels"),
+	OUTPUT_LOG		UMETA(DisplayName = "Output log"),
+	SCREEN			UMETA(DisplayName = "Screen"),
+};
+
+
 UCLASS(config=Game)
 class APunchKick01Character : public ACharacter
 {
@@ -58,6 +75,16 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
+	/**
+	* Initiates player attack
+	*/
+	void AttackStart();
+
+	/**
+	* Stops player attack
+	*/
+	void AttackEnd();
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -68,5 +95,20 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+private:
+	/**
+	* Log - prints a message to all the log outputs with a specific color
+	* @param LogLevel {@see ELogLevel} affects color of log
+	* @param FString the message for display
+	*/
+	void Log(ELogLevel LogLevel, FString Message);
+	/**
+	* Log - prints a message to all the log outputs with a specific color
+	* @param LogLevel {@see ELogLevel} affects color of log
+	* @param FString the message for display
+	* @param ELogOutput - All, Output Log or Screen
+	*/
+	void Log(ELogLevel LogLevel, FString Message, ELogOutput LogOutput);
 };
 
