@@ -80,16 +80,6 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
-	/**
-	* Initiates player attack
-	*/
-	void AttackStart();
-
-	/**
-	* Stops player attack
-	*/
-	void AttackEnd();
-
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

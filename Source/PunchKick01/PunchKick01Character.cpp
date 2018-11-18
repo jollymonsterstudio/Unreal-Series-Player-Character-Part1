@@ -76,10 +76,6 @@ void APunchKick01Character::SetupPlayerInputComponent(class UInputComponent* Pla
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APunchKick01Character::OnResetVR);
-
-	// attack functionality
-	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &APunchKick01Character::AttackStart);
-	PlayerInputComponent->BindAction("Attack", IE_Released, this, &APunchKick01Character::AttackEnd);
 }
 
 
@@ -137,16 +133,6 @@ void APunchKick01Character::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
-}
-
-void APunchKick01Character::AttackStart()
-{
-	Log(ELogLevel::INFO, __FUNCTION__);
-}
-
-void APunchKick01Character::AttackEnd()
-{
-	Log(ELogLevel::INFO, __FUNCTION__);
 }
 
 void APunchKick01Character::Log(ELogLevel LogLevel, FString Message)
