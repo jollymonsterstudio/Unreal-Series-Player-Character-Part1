@@ -8,20 +8,24 @@
 
 UENUM(BlueprintType)
 enum class ELogLevel: uint8 {
+	TRACE			UMETA(DisplayName = "Trace"),
 	DEBUG			UMETA(DisplayName = "Debug"),
 	INFO			UMETA(DisplayName = "Info"),
 	WARNING			UMETA(DisplayName = "Warning"),
-	ERROR			UMETA(DisplayName = "Error"),
+	ERROR			UMETA(DisplayName = "Error")
 };
-
 
 UENUM(BlueprintType)
 enum class ELogOutput: uint8 {
 	ALL				UMETA(DisplayName = "All levels"),
 	OUTPUT_LOG		UMETA(DisplayName = "Output log"),
-	SCREEN			UMETA(DisplayName = "Screen"),
+	SCREEN			UMETA(DisplayName = "Screen")
 };
 
+UENUM(BlueprintType)
+enum class EAttackType : uint8 {
+	MELEE_FIST			UMETA(DisplayName = "Melee - Fist")
+};
 
 UCLASS(config=Game)
 class APunchKick01Character : public ACharacter
@@ -35,6 +39,11 @@ class APunchKick01Character : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
+
+	/** Melle Fist Attack Montage **/
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess = "true"))
+		class UAnimMontage* MeleeFistAttackMontage;
+
 public:
 	APunchKick01Character();
 
