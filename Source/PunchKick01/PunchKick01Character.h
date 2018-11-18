@@ -7,19 +7,24 @@
 #include "PunchKick01Character.generated.h"
 
 UENUM(BlueprintType)
-enum class ELogLevel: uint8 {
+enum class ELogLevel : uint8 {
+	TRACE			UMETA(DisplayName = "Trace"),
 	DEBUG			UMETA(DisplayName = "Debug"),
 	INFO			UMETA(DisplayName = "Info"),
 	WARNING			UMETA(DisplayName = "Warning"),
-	ERROR			UMETA(DisplayName = "Error"),
+	ERROR			UMETA(DisplayName = "Error")
 };
 
-
 UENUM(BlueprintType)
-enum class ELogOutput: uint8 {
+enum class ELogOutput : uint8 {
 	ALL				UMETA(DisplayName = "All levels"),
 	OUTPUT_LOG		UMETA(DisplayName = "Output log"),
-	SCREEN			UMETA(DisplayName = "Screen"),
+	SCREEN			UMETA(DisplayName = "Screen")
+};
+
+UENUM(BlueprintType)
+enum class EAttackType : uint8 {
+	MELEE_FIST			UMETA(DisplayName = "Melee - Fist")
 };
 
 
