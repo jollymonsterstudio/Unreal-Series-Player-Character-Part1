@@ -149,7 +149,8 @@ void APunchKick01Character::MoveRight(float Value)
 void APunchKick01Character::AttackStart()
 {
 	Log(ELogLevel::INFO, __FUNCTION__);
-	// generate secret number between 1 and 3:
+	
+	// generate  number between 1 and 3:
 	int MontageSectionIndex = rand() % 3 + 1;
 
 	// create a montage section
